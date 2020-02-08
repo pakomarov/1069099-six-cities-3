@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павел Комаров](https://up.htmlacademy.ru/react/3/user/1069099).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Булах](https://htmlacademy.ru/profile/id1213123).
 
 ---
 
