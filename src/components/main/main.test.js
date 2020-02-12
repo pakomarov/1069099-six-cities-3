@@ -17,6 +17,7 @@ it(`Render Main`, () => {
   const tree = renderer
     .create(<Main
       places={PLACES}
+      onCardNameClick={() => {}}
     />)
     .toJSON();
 

@@ -7,6 +7,7 @@ it(`Render PlaceCard`, () => {
   const tree = renderer
     .create(<PlaceCard
       place={`Some place somewhere`}
+      onCardNameClick={() => {}}
     />)
     .toJSON();
 

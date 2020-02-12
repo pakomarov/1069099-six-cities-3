@@ -91,6 +91,7 @@ exports[`Render PlaceCard 1`] = `
     >
       <a
         href="#"
+        onClick={[Function]}
       >
         Some place somewhere
       </a>

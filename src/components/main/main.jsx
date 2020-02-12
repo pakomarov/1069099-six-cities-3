@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 
-const Main = ({places}) => {
+const Main = ({places, onCardNameClick}) => {
   const placeCount = places.length;
-  const placeCardComponents = places.map((it, i) => <PlaceCard key={it + i} place={it}/>);
+  const placeCardComponents = places.map((it, i) => <PlaceCard key={it + i} place={it} onCardNameClick={onCardNameClick}/>);
 
   return (
     <div className="page page--gray page--main">
@@ -108,7 +108,8 @@ const Main = ({places}) => {
 Main.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.string
-  ).isRequired
+  ).isRequired,
+  onCardNameClick: PropTypes.func.isRequired,
 };
 
 

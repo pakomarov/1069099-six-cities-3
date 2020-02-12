@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const PlaceCard = ({place}) => {
+const PlaceCard = ({place, onCardNameClick}) => {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
@@ -33,7 +33,10 @@ const PlaceCard = ({place}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{place}</a>
+          <a
+            href="#"
+            onClick={onCardNameClick}
+          >{place}</a>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
@@ -43,7 +46,8 @@ const PlaceCard = ({place}) => {
 
 
 PlaceCard.propTypes = {
-  place: PropTypes.string.isRequired
+  place: PropTypes.string.isRequired,
+  onCardNameClick: PropTypes.func.isRequired,
 };
 
 
