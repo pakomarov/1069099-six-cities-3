@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 
-const PLACES_COUNT = 1221;
+const PLACES = [
+  `Beautiful & luxurious apartment at great location`,
+  `Wood and stone place`,
+  `bruh`,
+  `bar`,
+  `fooz`,
+  `baz`
+];
 
 ReactDOM.render(
     <App
-      placesCount={PLACES_COUNT}
+      places={PLACES}
     />,
     document.querySelector(`#root`)
 );
