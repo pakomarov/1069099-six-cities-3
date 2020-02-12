@@ -19,7 +19,7 @@ const App = ({places}) => {
 App.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.string
-  ).isRequired
+  ).isRequired,
 };
 
 

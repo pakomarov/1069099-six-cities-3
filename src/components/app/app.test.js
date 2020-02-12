@@ -9,7 +9,7 @@ const PLACES = [
   `bruh`,
   `bar`,
   `fooz`,
-  `baz`
+  `baz`,
 ];
 
 
