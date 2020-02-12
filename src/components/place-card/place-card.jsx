@@ -1,9 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
-const PlaceCard = (props) => {
-  const {place} = props;
-
+const PlaceCard = ({place}) => {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
@@ -40,6 +39,11 @@ const PlaceCard = (props) => {
       </div>
     </article>
   );
+};
+
+
+PlaceCard.propTypes = {
+  place: PropTypes.string.isRequired
 };
 
 

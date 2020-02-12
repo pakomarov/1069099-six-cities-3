@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
 
-const Main = (props) => {
-  const {places} = props;
+const Main = ({places}) => {
+  const placeCount = places.length;
+  const placeCardComponents = places.map((it, i) => <PlaceCard key={it + i} place={it}/>);
 
   return (
     <div className="page page--gray page--main">
@@ -72,7 +74,7 @@ const Main = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{places.length} places to stay in Amsterdam</b>
+              <b className="places__found">{placeCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -89,7 +91,7 @@ const Main = (props) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {places.map((it, i) => <PlaceCard key={it + i} place={it}/>)}
+                {placeCardComponents}
               </div>
             </section>
             <div className="cities__right-section">
@@ -100,6 +102,13 @@ const Main = (props) => {
       </main>
     </div>
   );
+};
+
+
+Main.propTypes = {
+  places: PropTypes.arrayOf(
+      PropTypes.string
+  ).isRequired
 };
 
 
