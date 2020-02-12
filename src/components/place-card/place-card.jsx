@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const PlaceCard = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {place} = props;
 
   return (

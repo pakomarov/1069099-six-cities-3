@@ -3,7 +3,6 @@ import PlaceCard from '../place-card/place-card.jsx';
 
 
 const Main = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {places} = props;
 
   return (
