@@ -13,7 +13,7 @@ const PLACES = [
 ];
 
 
-it(`Render Main`, () => {
+it(`Should match snapshot of Main`, () => {
   const tree = renderer
     .create(<Main
       places={PLACES}

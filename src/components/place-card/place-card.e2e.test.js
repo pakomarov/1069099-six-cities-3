@@ -9,7 +9,7 @@ Enzyme.configure({
 });
 
 
-it(`Card name click`, () => {
+it(`Should call onCardNameClick`, () => {
   const onCardNameClick = jest.fn();
 
   const placeCard = shallow(
@@ -23,5 +23,5 @@ it(`Card name click`, () => {
 
   cardName.props().onClick();
 
-  expect(onCardNameClick.mock.calls.length).toBe(1);
+  expect(onCardNameClick).toHaveBeenCalledTimes(1);
 });

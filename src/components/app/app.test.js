@@ -13,7 +13,7 @@ const PLACES = [
 ];
 
 
-it(`Render App`, () => {
+it(`Should match snapshot of App`, () => {
   const tree = renderer
     .create(<App
       places={PLACES}
