@@ -8,7 +8,7 @@ const PLACES = [
   `bruh`,
   `bar`,
   `fooz`,
-  `baz`
+  `baz`,
 ];
 
 ReactDOM.render(
