@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceCard from './place-card.jsx';
+import OfferCard from './offer-card.jsx';
 
 
 it(`Should match snapshot of PlaceCard`, () => {
   const tree = renderer
-    .create(<PlaceCard
+    .create(<OfferCard
       place={`Some place somewhere`}
       onCardNameClick={() => {}}
     />)

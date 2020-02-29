@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import PlaceCard from './place-card.jsx';
+import OfferCard from './offer-card.jsx';
 
 
 Enzyme.configure({
@@ -13,7 +13,7 @@ it(`Should call onCardNameClick`, () => {
   const onCardNameClick = jest.fn();
 
   const placeCard = shallow(
-      <PlaceCard
+      <OfferCard
         place={`Some place somewhere`}
         onCardNameClick={onCardNameClick}
       />

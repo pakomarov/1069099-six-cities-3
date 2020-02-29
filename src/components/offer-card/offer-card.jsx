@@ -14,7 +14,7 @@ const TypeValueToTypeName = {
 const convertStarRatingToPercentageRating = (starRating) => ((starRating / 5) * 100);
 
 
-const PlaceCard = ({offer, onHover, onTitleClick}) => {
+const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
   const {
     picture,
     isPremium,
@@ -29,7 +29,7 @@ const PlaceCard = ({offer, onHover, onTitleClick}) => {
 
   return (
     <article className="cities__place-card place-card"
-      onMouseOver={() => onHover(offer)}
+      onMouseOver={() => onMouseOver(offer)}
     >
       {isPremium &&
       <div className="place-card__mark">
@@ -78,7 +78,7 @@ const PlaceCard = ({offer, onHover, onTitleClick}) => {
 };
 
 
-PlaceCard.propTypes = {
+OfferCard.propTypes = {
   offer: PropTypes.shape({
     picture: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
@@ -87,9 +87,9 @@ PlaceCard.propTypes = {
     type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.ROOM, OfferType.HOUSE, OfferType.HOTEL]),
     rating: PropTypes.number.isRequired,
   }).isRequired,
-  onHover: PropTypes.func.isRequired,
+  onMouseOver: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
 };
 
 
-export default PlaceCard;
+export default OfferCard;
