@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
 
-const cardNameClickHandler = () => {};
+const handleOfferTitleClick = () => {};
 
 
-const App = ({places}) => {
+const App = ({offers}) => {
   return (
     <Main
-      places={places}
-      onCardNameClick={cardNameClickHandler}
+      offers={offers}
+      onOfferTitleClick={handleOfferTitleClick}
     />
   );
 };
 
 
 App.propTypes = {
-  places: PropTypes.arrayOf(
-      PropTypes.string
-  ).isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 
