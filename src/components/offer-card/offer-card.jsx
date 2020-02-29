@@ -11,7 +11,7 @@ const TypeValueToTypeName = {
 };
 
 
-const convertStarRatingToPercentageRating = (starRating) => ((starRating / 5) * 100);
+const convertStarRatingToPercentageRating = (starRating) => Math.round(starRating) * 20;
 
 
 const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
