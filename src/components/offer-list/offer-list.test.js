@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {OfferType} from '../../const.js';
-import App from './app.jsx';
+import OfferList from './offer-list.jsx';
 
 
 const offers = [
@@ -41,10 +41,11 @@ const offers = [
 ];
 
 
-it(`Should match snapshot of App`, () => {
+it(`Should match snapshot of OfferList`, () => {
   const tree = renderer
-    .create(<App
+    .create(<OfferList
       offers={offers}
+      onOfferTitleClick={() => {}}
     />)
     .toJSON();
 

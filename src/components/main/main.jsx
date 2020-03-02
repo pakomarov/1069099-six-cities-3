@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card.jsx';
+import OfferList from '../offer-list/offer-list.jsx';
 
 
-const Main = ({places, onCardNameClick}) => {
-  const placeCount = places.length;
-  const placeCardComponents = places.map((it, i) => <PlaceCard key={it + i} place={it} onCardNameClick={onCardNameClick}/>);
+const Main = ({offers, onOfferTitleClick}) => {
+  const offerCount = offers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -74,7 +73,7 @@ const Main = ({places, onCardNameClick}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placeCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offerCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -90,9 +89,10 @@ const Main = ({places, onCardNameClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {placeCardComponents}
-              </div>
+              <OfferList
+                offers={offers}
+                onOfferTitleClick={onOfferTitleClick}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -106,10 +106,8 @@ const Main = ({places, onCardNameClick}) => {
 
 
 Main.propTypes = {
-  places: PropTypes.arrayOf(
-      PropTypes.string
-  ).isRequired,
-  onCardNameClick: PropTypes.func.isRequired,
+  offers: PropTypes.array.isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired,
 };
 
 

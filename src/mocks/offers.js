@@ -1,10 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {OfferType} from '../../const.js';
-import App from './app.jsx';
+import {OfferType} from '../const.js';
 
 
-const offers = [
+export default [
   {
     id: 1,
     picture: `img/apartment-01.jpg`,
@@ -39,14 +36,3 @@ const offers = [
     rating: 4.87,
   }
 ];
-
-
-it(`Should match snapshot of App`, () => {
-  const tree = renderer
-    .create(<App
-      offers={offers}
-    />)
-    .toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
