@@ -25,9 +25,9 @@ class OfferList extends PureComponent {
 
     return (
       <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer, i) => (
+        {offers.map((offer) => (
           <OfferCard
-            key={`${i}-${offer.title}`}
+            key={`${offer.id}`}
             offer={offer}
             onMouseOver={this._handleOfferCardMouseOver}
             onTitleClick={onOfferTitleClick}
@@ -41,7 +41,7 @@ class OfferList extends PureComponent {
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   })).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };

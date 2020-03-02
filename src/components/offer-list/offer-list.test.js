@@ -6,6 +6,7 @@ import OfferList from './offer-list.jsx';
 
 const offers = [
   {
+    id: 1,
     picture: `img/apartment-01.jpg`,
     isPremium: true,
     price: 120,
@@ -13,6 +14,7 @@ const offers = [
     type: OfferType.APARTMENT,
     rating: 0.1,
   }, {
+    id: 2,
     picture: `img/room.jpg`,
     isPremium: false,
     price: 80,
@@ -20,6 +22,7 @@ const offers = [
     type: OfferType.ROOM,
     rating: 1.3,
   }, {
+    id: 3,
     picture: `img/apartment-02.jpg`,
     isPremium: true,
     price: 123,
@@ -27,6 +30,7 @@ const offers = [
     type: OfferType.HOUSE,
     rating: 3.6,
   }, {
+    id: 4,
     picture: `img/apartment-03.jpg`,
     isPremium: false,
     price: 9999,

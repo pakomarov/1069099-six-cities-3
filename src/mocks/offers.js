@@ -3,6 +3,7 @@ import {OfferType} from '../const.js';
 
 export default [
   {
+    id: 1,
     picture: `img/apartment-01.jpg`,
     isPremium: true,
     price: 120,
@@ -10,6 +11,7 @@ export default [
     type: OfferType.APARTMENT,
     rating: 0.1,
   }, {
+    id: 2,
     picture: `img/room.jpg`,
     isPremium: false,
     price: 80,
@@ -17,6 +19,7 @@ export default [
     type: OfferType.ROOM,
     rating: 1.3,
   }, {
+    id: 3,
     picture: `img/apartment-02.jpg`,
     isPremium: true,
     price: 123,
@@ -24,6 +27,7 @@ export default [
     type: OfferType.HOUSE,
     rating: 3.6,
   }, {
+    id: 4,
     picture: `img/apartment-03.jpg`,
     isPremium: false,
     price: 9999,

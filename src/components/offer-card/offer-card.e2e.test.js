@@ -11,6 +11,7 @@ Enzyme.configure({
 
 
 const offer = {
+  id: 0,
   picture: ``,
   isPremium: true,
   price: 0,
