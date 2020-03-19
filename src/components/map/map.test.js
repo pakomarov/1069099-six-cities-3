@@ -6,8 +6,8 @@ import Map from './map.jsx';
 it(`Should match snapshot of Map`, () => {
   const tree = renderer
     .create(<Map
-      area={[52.38333, 4.9]}
-      markers={[[52.38333, 4.9]]}
+      area={[1, 2]}
+      markers={[[1, 2]]}
     />, {
       createNodeMock: () => {
         return document.createElement(`div`);

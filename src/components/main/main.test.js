@@ -7,7 +7,7 @@ import Main from './main.jsx';
 const offers = [
   {
     id: 1,
-    coords: [52.3909553943508, 4.85309666406198],
+    coords: [1, 2],
     picture: `img/apartment-01.jpg`,
     isPremium: true,
     price: 120,
@@ -16,7 +16,7 @@ const offers = [
     rating: 0.1,
   }, {
     id: 2,
-    coords: [52.369553943508, 4.85309666406198],
+    coords: [1, 2],
     picture: `img/room.jpg`,
     isPremium: false,
     price: 80,
@@ -25,7 +25,7 @@ const offers = [
     rating: 1.3,
   }, {
     id: 3,
-    coords: [52.3909553943508, 4.929309666406198],
+    coords: [1, 2],
     picture: `img/apartment-02.jpg`,
     isPremium: true,
     price: 123,
@@ -34,7 +34,7 @@ const offers = [
     rating: 3.6,
   }, {
     id: 4,
-    coords: [52.3809553943508, 4.939309666406198],
+    coords: [1, 2],
     picture: `img/apartment-03.jpg`,
     isPremium: false,
     price: 9999,
