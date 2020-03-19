@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OfferList from '../offer-list/offer-list.jsx';
+import Map from '../map/map.jsx';
+import {CityCoords} from '../../const.js';
 
 
 const Main = ({offers, onOfferTitleClick}) => {
   const offerCount = offers.length;
+  const markers = offers.map((offer) => offer.coords);
 
   return (
     <div className="page page--gray page--main">
@@ -95,7 +98,10 @@ const Main = ({offers, onOfferTitleClick}) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                area={CityCoords.AMSTERDAM}
+                markers={markers}
+              />
             </div>
           </div>
         </div>
