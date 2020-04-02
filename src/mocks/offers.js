@@ -15,7 +15,7 @@ export default [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     bedroomCount: 3,
     maxGuestCount: 3,
-    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
@@ -34,7 +34,7 @@ export default [
     description: `blah blah`,
     bedroomCount: 3,
     maxGuestCount: 3,
-    goods: [`Heating`],
+    features: [`Heating`],
     host: {
       avatar: `img/avatar-angelina.jpg`,
       name: `A`,
@@ -53,7 +53,7 @@ export default [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     bedroomCount: 999,
     maxGuestCount: 666,
-    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`, `Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`, `Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`, `Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`, `Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
@@ -72,7 +72,7 @@ export default [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     bedroomCount: 3,
     maxGuestCount: 3,
-    goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
