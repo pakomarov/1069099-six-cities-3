@@ -31,7 +31,9 @@ const App = ({offers}) => {
           />
         </Route>
         <Route exact path="/dev-offer">
-          <Offer/>
+          <Offer
+            offer={offers[0]}
+          />
         </Route>
       </Switch>
     </BrowserRouter>

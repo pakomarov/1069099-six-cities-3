@@ -1,7 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
-const Offer = () => {
+const Offer = ({
+  images,
+  title,
+  description,
+  isPremium,
+  type,
+  rating,
+  bedroomCount,
+  maxGuestCount,
+  price,
+  features,
+  host,
+}) => {
   return (
     <div className="page">
       <header className="header">
@@ -325,6 +338,25 @@ const Offer = () => {
       </main>
     </div>
   );
+};
+
+
+Offer.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequire,
+  description: PropTypes.string.isRequired,
+  isPremium: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  bedroomCount: PropTypes.number.isRequired,
+  maxGuestCount: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  features: PropTypes.arrayOf(PropTypes.string).isRequired,
+  host: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    isSuper: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 
