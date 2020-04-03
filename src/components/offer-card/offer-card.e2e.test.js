@@ -39,6 +39,24 @@ it(`Should call onTitleClick`, () => {
   expect(onTitleClick).toHaveBeenCalled();
 });
 
+it(`Should pass offer prop into the callback onTitleClick`, () => {
+  const onTitleClick = jest.fn();
+
+  const offerCard = shallow(
+      <OfferCard
+        offer={offer}
+        onMouseOver={() => {}}
+        onTitleClick={onTitleClick}
+      />
+  );
+
+  const offerTitleElement = offerCard.find(`.place-card__name a`);
+
+  offerTitleElement.props().onClick();
+
+  expect(onTitleClick).toHaveBeenCalledWith(offer);
+});
+
 it(`Should pass offer to onMouseOver on mouseover event`, () => {
   const onMouseOver = jest.fn();
 
