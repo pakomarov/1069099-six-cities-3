@@ -8,7 +8,7 @@ const offers = [
   {
     id: 1,
     coords: [1, 2],
-    picture: `img/apartment-01.jpg`,
+    thumbnail: `img/apartment-01.jpg`,
     isPremium: true,
     price: 120,
     title: `Beautiful luxurious apartment at great location`,
@@ -17,7 +17,7 @@ const offers = [
   }, {
     id: 2,
     coords: [1, 2],
-    picture: `img/room.jpg`,
+    thumbnail: `img/room.jpg`,
     isPremium: false,
     price: 80,
     title: `Wood and stone place`,
@@ -26,7 +26,7 @@ const offers = [
   }, {
     id: 3,
     coords: [1, 2],
-    picture: `img/apartment-02.jpg`,
+    thumbnail: `img/apartment-02.jpg`,
     isPremium: true,
     price: 123,
     title: `Canal View Prinsengracht`,
@@ -35,7 +35,7 @@ const offers = [
   }, {
     id: 4,
     coords: [1, 2],
-    picture: `img/apartment-03.jpg`,
+    thumbnail: `img/apartment-03.jpg`,
     isPremium: false,
     price: 9999,
     title: `Nice, cozy, warm big bed apartment`,
