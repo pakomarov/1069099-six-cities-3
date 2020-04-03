@@ -5,6 +5,8 @@ import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 
 
+//foo
+
 const Page = {
   MAIN: `main`,
   OFFER: `offer`,
