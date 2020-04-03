@@ -4,7 +4,6 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 
-// foo
 
 const Page = {
   MAIN: `main`,
