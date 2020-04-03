@@ -34,7 +34,7 @@ it(`Should call onTitleClick`, () => {
 
   const offerTitleElement = offerCard.find(`.place-card__name a`);
 
-  offerTitleElement.props().onClick();
+  offerTitleElement.simulate(`click`);
 
   expect(onTitleClick).toHaveBeenCalled();
 });
@@ -52,7 +52,7 @@ it(`Should pass offer prop into the callback onTitleClick`, () => {
 
   const offerTitleElement = offerCard.find(`.place-card__name a`);
 
-  offerTitleElement.props().onClick();
+  offerTitleElement.simulate(`click`);
 
   expect(onTitleClick).toHaveBeenCalledWith(offer);
 });
