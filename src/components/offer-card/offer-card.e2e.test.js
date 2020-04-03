@@ -12,7 +12,7 @@ Enzyme.configure({
 
 const offer = {
   id: 0,
-  picture: ``,
+  thumbnail: ``,
   isPremium: true,
   price: 0,
   title: ``,
@@ -34,9 +34,27 @@ it(`Should call onTitleClick`, () => {
 
   const offerTitleElement = offerCard.find(`.place-card__name a`);
 
-  offerTitleElement.props().onClick();
+  offerTitleElement.simulate(`click`);
 
   expect(onTitleClick).toHaveBeenCalled();
+});
+
+it(`Should pass offer prop into the callback onTitleClick`, () => {
+  const onTitleClick = jest.fn();
+
+  const offerCard = shallow(
+      <OfferCard
+        offer={offer}
+        onMouseOver={() => {}}
+        onTitleClick={onTitleClick}
+      />
+  );
+
+  const offerTitleElement = offerCard.find(`.place-card__name a`);
+
+  offerTitleElement.simulate(`click`);
+
+  expect(onTitleClick).toHaveBeenCalledWith(offer);
 });
 
 it(`Should pass offer to onMouseOver on mouseover event`, () => {

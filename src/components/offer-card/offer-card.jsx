@@ -16,7 +16,7 @@ const convertStarRatingToPercentageRating = (starRating) => Math.round(starRatin
 
 const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
   const {
-    picture,
+    thumbnail,
     isPremium,
     price,
     title,
@@ -39,7 +39,7 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image"
-            src={picture}
+            src={thumbnail}
             width="260" height="200" alt="Place image"
           />
         </a>
@@ -68,7 +68,7 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
         <h2 className="place-card__name">
           <a
             href="#"
-            onClick={onTitleClick}
+            onClick={() => onTitleClick(offer)}
           >{title}</a>
         </h2>
         <p className="place-card__type">{typeName}</p>
@@ -80,7 +80,7 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
 
 OfferCard.propTypes = {
   offer: PropTypes.shape({
-    picture: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
