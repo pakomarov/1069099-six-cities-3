@@ -68,7 +68,7 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
         <h2 className="place-card__name">
           <a
             href="#"
-            onClick={onTitleClick}
+            onClick={() => onTitleClick(offer)}
           >{title}</a>
         </h2>
         <p className="place-card__type">{typeName}</p>
