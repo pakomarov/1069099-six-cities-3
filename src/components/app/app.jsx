@@ -31,7 +31,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
+    const {offers, reviews} = this.props;
     const {currentPage, selectedOffer} = this.state;
 
     switch (currentPage) {
@@ -46,6 +46,7 @@ class App extends PureComponent {
         return (
           <PageOffer
             offer={selectedOffer}
+            reviews={reviews}
           />
         );
     }
@@ -54,7 +55,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, reviews} = this.props;
 
     return (
       <BrowserRouter>
@@ -71,6 +72,7 @@ class App extends PureComponent {
           <Route exact path="/dev-offer">
             <PageOffer
               offer={offers[0]}
+              reviews={reviews}
             />
           </Route>
         </Switch>
@@ -82,6 +84,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   offers: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 
