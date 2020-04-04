@@ -26,8 +26,8 @@ const getLeafletMap = (container, area) => {
   return map;
 };
 
-const addMarkerToMap = (markerCoords, map) => {
-  leaflet.marker(markerCoords, {icon})
+const addMarkerToMap = (siteCoords, map) => {
+  leaflet.marker(siteCoords, {icon})
   .addTo(map);
 };
 
@@ -40,22 +40,22 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const {area, markers} = this.props;
+    const {area, sites} = this.props;
     const containerElement = this._containerRef.current;
 
     const map = getLeafletMap(containerElement, area);
-    markers.forEach((marker) => addMarkerToMap(marker, map));
+    sites.forEach((marker) => addMarkerToMap(marker, map));
   }
 
   render() {
     return (
-      <div className="cities__right-section">
-        <section
-          className="cities__map map"
+      <section className="cities__map map">
+        <div
           ref={this._containerRef}
-        >
-        </section>
-      </div>
+          id="map"
+          style={{width: `100%`, height: `100%`}}
+        ></div>
+      </section>
     );
   }
 }
@@ -63,7 +63,7 @@ class Map extends PureComponent {
 
 Map.propTypes = {
   area: PropTypes.arrayOf(PropTypes.number),
-  markers: PropTypes.arrayOf(
+  sites: PropTypes.arrayOf(
       PropTypes.arrayOf(PropTypes.number)
   ),
 };

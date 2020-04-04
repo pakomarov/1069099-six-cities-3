@@ -7,7 +7,7 @@ it(`Should match snapshot of Map`, () => {
   const tree = renderer
     .create(<Map
       area={[1, 2]}
-      markers={[[1, 2]]}
+      sites={[[1, 2]]}
     />, {
       createNodeMock: () => {
         return document.createElement(`div`);

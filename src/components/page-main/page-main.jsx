@@ -7,7 +7,7 @@ import {CityCoords} from '../../const.js';
 
 const PageMain = ({offers, onOfferTitleClick}) => {
   const offerCount = offers.length;
-  const markers = offers.map((offer) => offer.coords);
+  const sites = offers.map((offer) => offer.coords);
 
   return (
     <div className="page page--gray page--main">
@@ -100,7 +100,7 @@ const PageMain = ({offers, onOfferTitleClick}) => {
             <div className="cities__right-section">
               <Map
                 area={CityCoords.AMSTERDAM}
-                markers={markers}
+                sites={sites}
               />
             </div>
           </div>

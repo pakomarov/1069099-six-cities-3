@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should match snapshot of Map 1`] = `
-<div
-  className="cities__right-section"
+<section
+  className="cities__map map"
 >
-  <section
-    className="cities__map map"
+  <div
+    id="map"
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
   />
-</div>
+</section>
 `;
