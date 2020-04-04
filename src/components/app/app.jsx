@@ -1,11 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import Main from '../main/main.jsx';
-import Offer from '../offer/offer.jsx';
+import PageMain from '../page-main/page-main.jsx';
+import PageOffer from '../page-offer/page-offer.jsx';
 
-
-//foo
 
 const Page = {
   MAIN: `main`,
@@ -39,14 +37,14 @@ class App extends PureComponent {
     switch (currentPage) {
       case Page.MAIN:
         return (
-          <Main
+          <PageMain
             offers={offers}
             onOfferTitleClick={this._handleOfferTitleClick}
           />
         );
       case Page.OFFER:
         return (
-          <Offer
+          <PageOffer
             offer={selectedOffer}
           />
         );
@@ -65,13 +63,13 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-main">
-            <Main
+            <PageMain
               offers={offers}
               onOfferTitleClick={this._handleOfferTitleClick}
             />
           </Route>
           <Route exact path="/dev-offer">
-            <Offer
+            <PageOffer
               offer={offers[0]}
             />
           </Route>

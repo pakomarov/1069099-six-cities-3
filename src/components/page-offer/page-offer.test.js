@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {OfferType} from '../../const.js';
-import Offer from './offer.jsx';
+import PageOffer from './page-offer.jsx';
 
 
 const offer = {
@@ -28,7 +28,7 @@ const offer = {
 
 it(`Should match snapshot of Offer`, () => {
   const tree = renderer
-    .create(<Offer
+    .create(<PageOffer
       offer={offer}
     />)
     .toJSON();

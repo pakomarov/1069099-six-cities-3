@@ -1,3 +1,23 @@
+const LogoSize = {
+  LARGE: {
+    WIDTH: 81,
+    HEIGHT: 41,
+  },
+  SMALL: {
+    WIDTH: 64,
+    HEIGHT: 33,
+  },
+};
+
+const City = {
+  PARIS: `Paris`,
+  COLOGNE: `Cologne`,
+  BRUSSELS: `Brussels`,
+  AMSTERDAM: `Amsterdam`,
+  HAMBURG: `Hamburg`,
+  DUSSELDORF: `Dusseldorf`,
+};
+
 const OfferType = {
   APARTMENT: `apartment`,
   ROOM: `room`,
@@ -15,6 +35,8 @@ const ICON_SIZE = [30, 30];
 
 
 export {
+  LogoSize,
+  City,
   OfferType,
   CityCoords,
   ZOOM,

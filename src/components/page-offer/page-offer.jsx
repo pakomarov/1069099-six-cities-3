@@ -8,7 +8,7 @@ const MAX_IMAGE_COUNT = 6;
 const convertStarRatingToPercentageRating = (starRating) => Math.round(starRating) * 20;
 
 
-const Offer = ({
+const PageOffer = ({
   offer: {
     images,
     isPremium,
@@ -320,7 +320,7 @@ const Offer = ({
 };
 
 
-Offer.propTypes = {
+PageOffer.propTypes = {
   offer: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     isPremium: PropTypes.bool.isRequired,
@@ -341,4 +341,4 @@ Offer.propTypes = {
 };
 
 
-export default Offer;
+export default PageOffer;

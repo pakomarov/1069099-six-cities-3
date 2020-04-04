@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {OfferType} from '../../const.js';
-import Main from './main.jsx';
+import PageMain from './page-main.jsx';
 
 
 const offers = [
@@ -47,7 +47,7 @@ const offers = [
 
 it(`Should match snapshot of Main`, () => {
   const tree = renderer
-    .create(<Main
+    .create(<PageMain
       offers={offers}
       onOfferTitleClick={() => {}}
     />, {

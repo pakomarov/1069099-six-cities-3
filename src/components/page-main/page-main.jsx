@@ -5,7 +5,7 @@ import Map from '../map/map.jsx';
 import {CityCoords} from '../../const.js';
 
 
-const Main = ({offers, onOfferTitleClick}) => {
+const PageMain = ({offers, onOfferTitleClick}) => {
   const offerCount = offers.length;
   const markers = offers.map((offer) => offer.coords);
 
@@ -111,10 +111,10 @@ const Main = ({offers, onOfferTitleClick}) => {
 };
 
 
-Main.propTypes = {
+PageMain.propTypes = {
   offers: PropTypes.array.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
 
 
-export default Main;
+export default PageMain;
