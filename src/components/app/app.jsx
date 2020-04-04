@@ -31,7 +31,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers, reviews} = this.props;
+    const {offers, reviews, nearbyOffers} = this.props;
     const {currentPage, selectedOffer} = this.state;
 
     switch (currentPage) {
@@ -47,6 +47,7 @@ class App extends PureComponent {
           <PageOffer
             offer={selectedOffer}
             reviews={reviews}
+            nearbyOffers={nearbyOffers}
           />
         );
     }
@@ -55,7 +56,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offers, reviews} = this.props;
+    const {offers, reviews, nearbyOffers} = this.props;
 
     return (
       <BrowserRouter>
@@ -73,6 +74,7 @@ class App extends PureComponent {
             <PageOffer
               offer={offers[0]}
               reviews={reviews}
+              nearbyOffers={nearbyOffers}
             />
           </Route>
         </Switch>
@@ -85,6 +87,7 @@ class App extends PureComponent {
 App.propTypes = {
   offers: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
+  nearbyOffers: PropTypes.array.isRequired,
 };
 
 

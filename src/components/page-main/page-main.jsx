@@ -98,10 +98,12 @@ const PageMain = ({offers, onOfferTitleClick}) => {
               />
             </section>
             <div className="cities__right-section">
-              <Map
-                area={CityCoords.AMSTERDAM}
-                sites={sites}
-              />
+              <section className="cities__map map">
+                <Map
+                  area={CityCoords.AMSTERDAM}
+                  sites={sites}
+                />
+              </section>
             </div>
           </div>
         </div>
