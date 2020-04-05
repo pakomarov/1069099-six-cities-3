@@ -12,11 +12,12 @@ const ActionType = {
 
 
 const ActionCreator = {
-  selectCity: ({name, coords}) => ({
+  selectCity: ({name, coords, zoom}) => ({
     type: ActionType.SELECT_CITY,
     payload: {
       name,
       coords,
+      zoom,
     },
   }),
 };

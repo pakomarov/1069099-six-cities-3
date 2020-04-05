@@ -1,7 +1,7 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
-import {ZOOM, ICON_SIZE} from '../../const.js';
+import {ICON_SIZE} from '../../const.js';
 
 
 const icon = leaflet.icon({
@@ -10,12 +10,12 @@ const icon = leaflet.icon({
 });
 
 
-const getLeafletMap = (container, area) => {
+const getLeafletMap = (container, center, zoom) => {
   const map = leaflet.map(container, {
-    center: area,
-    zoom: ZOOM,
+    center,
+    zoom,
     zoomControl: false,
-    marker: true
+    marker: true,
   });
 
   leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -40,11 +40,11 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    const {area, sites} = this.props;
+    const {center, zoom, sites} = this.props;
     const containerElement = this._containerRef.current;
 
-    const map = getLeafletMap(containerElement, area);
-    sites.forEach((marker) => addMarkerToMap(marker, map));
+    const map = getLeafletMap(containerElement, center, zoom);
+    sites.forEach((coords) => addMarkerToMap(coords, map));
   }
 
   render() {
@@ -60,7 +60,8 @@ class Map extends PureComponent {
 
 
 Map.propTypes = {
-  area: PropTypes.arrayOf(PropTypes.number),
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
   sites: PropTypes.arrayOf(
       PropTypes.arrayOf(PropTypes.number)
   ),

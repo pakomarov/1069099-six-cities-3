@@ -28,6 +28,7 @@ const PageOffer = ({
     description,
     city: {
       coords: cityCoords,
+      zoom,
     },
   },
   reviews,
@@ -198,7 +199,8 @@ const PageOffer = ({
           </div>
           <section className="property__map map">
             <Map
-              area={cityCoords}
+              center={cityCoords}
+              zoom={zoom}
               sites={sites}
             />
           </section>
@@ -236,6 +238,7 @@ PageOffer.propTypes = {
     description: PropTypes.string.isRequired,
     city: PropTypes.shape({
       coords: PropTypes.arrayOf(PropTypes.number).isRequired,
+      zoom: PropTypes.number.isRequired,
     })
   }).isRequired,
   reviews: PropTypes.array.isRequired,

@@ -24,6 +24,7 @@ export default [
     city: {
       coords: [52.38333, 4.9],
       name: `Amsterdam`,
+      zoom: 12,
     },
   }, {
     id: 2,
@@ -47,6 +48,7 @@ export default [
     city: {
       coords: [52.38333, 4.9],
       name: `Paris`,
+      zoom: 12,
     },
   }, {
     id: 3,
@@ -70,6 +72,7 @@ export default [
     city: {
       coords: [52.38333, 4.9],
       name: `Paris`,
+      zoom: 12,
     },
   }, {
     id: 4,
@@ -93,6 +96,7 @@ export default [
     city: {
       coords: [52.38333, 4.9],
       name: `Brussels`,
+      zoom: 12,
     },
   }
 ];
