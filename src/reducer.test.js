@@ -1,7 +1,8 @@
-import {OfferType} from '../const.js';
+import {reducer, ActionCreator} from './reducer.js';
+import {OfferType} from './const.js';
 
 
-export default [
+const offers = [
   {
     id: 1,
     coords: [52.3909553943508, 4.85309666406198],
@@ -96,3 +97,35 @@ export default [
     },
   }
 ];
+
+it(`Should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    offers,
+    selectedCity: {
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+    }
+  });
+});
+
+it(`Should change selectedCity to a given value`, () => {
+  const initialState = {
+    offers: void 0,
+    selectedCity: {
+      coords: [1, 2],
+      name: `InitialCity`,
+    }
+  };
+
+  const payload = {
+    coords: [3, 4],
+    name: `FinalCity`,
+  };
+
+  const finalState = {
+    offers: void 0,
+    selectedCity: payload,
+  };
+
+  expect(reducer(initialState, ActionCreator.selectCity(payload))).toEqual(finalState);
+});
