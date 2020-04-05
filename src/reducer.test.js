@@ -25,6 +25,7 @@ const offers = [
     city: {
       coords: [52.38333, 4.9],
       name: `Amsterdam`,
+      zoom: 12,
     },
   }, {
     id: 2,
@@ -48,6 +49,7 @@ const offers = [
     city: {
       coords: [52.38333, 4.9],
       name: `Paris`,
+      zoom: 12,
     },
   }, {
     id: 3,
@@ -71,6 +73,7 @@ const offers = [
     city: {
       coords: [52.38333, 4.9],
       name: `Paris`,
+      zoom: 12,
     },
   }, {
     id: 4,
@@ -94,6 +97,7 @@ const offers = [
     city: {
       coords: [52.38333, 4.9],
       name: `Brussels`,
+      zoom: 12,
     },
   }
 ];
@@ -104,6 +108,7 @@ it(`Should return initial state`, () => {
     selectedCity: {
       coords: [52.38333, 4.9],
       name: `Amsterdam`,
+      zoom: 12,
     }
   });
 });
@@ -114,12 +119,14 @@ it(`Should change selectedCity to a given value`, () => {
     selectedCity: {
       coords: [1, 2],
       name: `InitialCity`,
+      zoom: 12,
     }
   };
 
   const payload = {
     coords: [3, 4],
     name: `FinalCity`,
+    zoom: 12,
   };
 
   const finalState = {

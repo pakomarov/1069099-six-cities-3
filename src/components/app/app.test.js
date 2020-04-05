@@ -1,7 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import {OfferType} from '../../const.js';
 import App from './app.jsx';
+
+
+const mockStore = configureStore([]);
 
 
 const offers = [
@@ -25,7 +30,9 @@ const offers = [
       isSuper: true,
     },
     city: {
-      coords: [52.38333, 4.9]
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
     },
   }, {
     id: 2,
@@ -47,7 +54,9 @@ const offers = [
       isSuper: false,
     },
     city: {
-      coords: [52.38333, 4.9]
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
     },
   }, {
     id: 3,
@@ -69,7 +78,9 @@ const offers = [
       isSuper: true,
     },
     city: {
-      coords: [52.38333, 4.9]
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
     },
   }, {
     id: 4,
@@ -91,7 +102,9 @@ const offers = [
       isSuper: true,
     },
     city: {
-      coords: [52.38333, 4.9]
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
     },
   }
 ];
@@ -192,16 +205,28 @@ const nearbyOffers = [
 
 
 it(`Should match snapshot of App`, () => {
+  const store = mockStore({
+    offers,
+    selectedCity: {
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
+    }
+  });
+
   const tree = renderer
-    .create(<App
-      offers={offers}
-      reviews={reviews}
-      nearbyOffers={nearbyOffers}
-    />, {
-      createNodeMock: () => {
-        return document.createElement(`div`);
-      }
-    })
+    .create(
+        <Provider store={store}>
+          <App
+            reviews={reviews}
+            nearbyOffers={nearbyOffers}
+          />
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return document.createElement(`div`);
+          }
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

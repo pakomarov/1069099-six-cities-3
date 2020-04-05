@@ -24,7 +24,8 @@ const offer = {
     isSuper: true,
   },
   city: {
-    coords: [52.38333, 4.9]
+    coords: [52.38333, 4.9],
+    zoom: 10,
   },
 };
 

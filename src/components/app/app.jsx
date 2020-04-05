@@ -55,7 +55,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {reviews, nearbyOffers} = this.props;
+    // const {reviews, nearbyOffers} = this.props;
 
     return (
       <BrowserRouter>

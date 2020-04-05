@@ -6,7 +6,8 @@ import Map from './map.jsx';
 it(`Should match snapshot of Map`, () => {
   const tree = renderer
     .create(<Map
-      area={[1, 2]}
+      center={[1, 2]}
+      zoom={1}
       sites={[[1, 2]]}
     />, {
       createNodeMock: () => {

@@ -1,60 +1,61 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import {OfferType} from '../../const.js';
 import PageMain from './page-main.jsx';
 
 
-const offers = [
-  {
-    id: 1,
-    coords: [1, 2],
-    thumbnail: `img/apartment-01.jpg`,
-    isPremium: true,
-    price: 120,
-    title: `Beautiful luxurious apartment at great location`,
-    type: OfferType.APARTMENT,
-    rating: 0.1,
-  }, {
-    id: 2,
-    coords: [1, 2],
-    thumbnail: `img/room.jpg`,
-    isPremium: false,
-    price: 80,
-    title: `Wood and stone place`,
-    type: OfferType.ROOM,
-    rating: 1.3,
-  }, {
-    id: 3,
-    coords: [1, 2],
-    thumbnail: `img/apartment-02.jpg`,
-    isPremium: true,
-    price: 123,
-    title: `Canal View Prinsengracht`,
-    type: OfferType.HOUSE,
-    rating: 3.6,
-  }, {
-    id: 4,
-    coords: [1, 2],
-    thumbnail: `img/apartment-03.jpg`,
-    isPremium: false,
-    price: 9999,
-    title: `Nice, cozy, warm big bed apartment`,
-    type: OfferType.HOTEL,
-    rating: 4.87,
-  }
-];
+const mockStore = configureStore([]);
 
 
 it(`Should match snapshot of Main`, () => {
+  const store = mockStore({
+    offers: [{
+      id: 1,
+      coords: [52.3909553943508, 4.85309666406198],
+      thumbnail: `img/apartment-01.jpg`,
+      isPremium: true,
+      price: 120,
+      title: `Beautiful luxurious apartment at great location`,
+      type: OfferType.APARTMENT,
+      rating: 0.1,
+      images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
+      description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      bedroomCount: 3,
+      maxGuestCount: 3,
+      features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
+      host: {
+        avatar: `img/avatar-angelina.jpg`,
+        name: `Angelina`,
+        isSuper: true,
+      },
+      city: {
+        coords: [52.38333, 4.9],
+        name: `Amsterdam`,
+        zoom: 12,
+      },
+    }],
+    selectedCity: {
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
+    },
+  });
+
   const tree = renderer
-    .create(<PageMain
-      offers={offers}
-      onOfferTitleClick={() => {}}
-    />, {
-      createNodeMock: () => {
-        return document.createElement(`div`);
-      }
-    })
+    .create(
+        <Provider store={store}>
+          <PageMain
+            onOfferTitleClick={() => {}}
+          />
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return document.createElement(`div`);
+          }
+        }
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
