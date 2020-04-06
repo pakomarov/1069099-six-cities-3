@@ -5,11 +5,21 @@ const OfferType = {
   HOTEL: `hotel`,
 };
 
-const CityCoords = {
-  AMSTERDAM: [52.38333, 4.9],
+const SortType = {
+  POPULAR: `popular`,
+  PRICE_LOW_TO_HIGH: `price-low-to-high`,
+  PRICE_HIGH_TO_LOW: `price-high-to-low`,
+  RATING_HIGH_TO_LOW: `rating-high-to-low`,
 };
 
-const ZOOM = 12;
+const SORT_TYPES = [
+  SortType.POPULAR,
+  SortType.PRICE_LOW_TO_HIGH,
+  SortType.PRICE_HIGH_TO_LOW,
+  SortType.RATING_HIGH_TO_LOW
+];
+
+const DEFAULT_SORT_TYPE = SortType.POPULAR;
 
 const ICON_SIZE = [30, 30];
 
@@ -22,8 +32,9 @@ const MAX_REVIEW_COUNT = 10;
 
 export {
   OfferType,
-  CityCoords,
-  ZOOM,
+  SortType,
+  SORT_TYPES,
+  DEFAULT_SORT_TYPE,
   ICON_SIZE,
   MAX_IMAGE_COUNT,
   MAX_NEARBY_OFFER_COUNT,

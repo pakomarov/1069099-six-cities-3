@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
+import {SortType} from '../../const.js';
 import CityFilter from '../city-filter/city-filter.jsx';
+import Sorting from '../sorting/sorting.jsx';
 import OfferList from '../offer-list/offer-list.jsx';
 import Map from '../map/map.jsx';
 
@@ -10,9 +12,12 @@ import Map from '../map/map.jsx';
 const Catalog = ({
   cities,
   selectedCity,
+  sortTypes,
+  selectedSortType,
   offers,
   focusedOfferId,
   onCitySelect,
+  onSortTypeSelect,
   onOfferFocus,
   onOfferFocusRemove,
   onOfferTitleClick,
@@ -39,21 +44,11 @@ const Catalog = ({
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">{offerCount} place{offerCount > 1 ? `s` : ``} to stay in {selectedCityName}</b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex="0">
-                Popular
-                <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom places__options--opened">
-                <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                <li className="places__option" tabIndex="0">Price: low to high</li>
-                <li className="places__option" tabIndex="0">Price: high to low</li>
-                <li className="places__option" tabIndex="0">Top rated first</li>
-              </ul>
-            </form>
+            <Sorting
+              sortTypes={sortTypes}
+              selectedSortType={selectedSortType}
+              onSortTypeSelect={onSortTypeSelect}
+            />
             <OfferList
               offers={offers}
               onOfferFocus={onOfferFocus}
@@ -86,8 +81,11 @@ Catalog.propTypes = {
     coords: PropTypes.array.isRequired,
     zoom: PropTypes.number.isRequired,
   }).isRequired,
+  sortTypes: PropTypes.array.isRequired,
+  selectedSortType: PropTypes.string.isRequired,
   focusedOfferId: PropTypes.number,
   onCitySelect: PropTypes.func.isRequired,
+  onSortTypeSelect: PropTypes.func.isRequired,
   onOfferFocus: PropTypes.func.isRequired,
   onOfferFocusRemove: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
@@ -104,16 +102,36 @@ const getCitiesFromOffers = (offers) => offers.reduce((cities, offer) => {
 
 const getOffersForSelectedCity = (offers, selectedCity) => offers.filter((offer) => offer.city.name === selectedCity.name);
 
+const getSortedOffers = (offers, sortType) => {
+  switch (sortType) {
+    case SortType.POPULAR:
+      return offers.slice();
+    case SortType.PRICE_LOW_TO_HIGH:
+      return offers.slice().sort((a, b) => a.price - b.price);
+    case SortType.PRICE_HIGH_TO_LOW:
+      return offers.slice().sort((a, b) => b.price - a.price);
+    case SortType.RATING_HIGH_TO_LOW:
+      return offers.slice().sort((a, b) => b.rating - a.rating);
+  }
+
+  return offers.slice();
+};
+
 const mapStateToProps = (state) => ({
   cities: getCitiesFromOffers(state.offers),
   selectedCity: state.selectedCity,
-  offers: getOffersForSelectedCity(state.offers, state.selectedCity),
+  sortTypes: state.sortTypes,
+  selectedSortType: state.selectedSortType,
+  offers: getSortedOffers(getOffersForSelectedCity(state.offers, state.selectedCity), state.selectedSortType),
   focusedOfferId: state.focusedOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCitySelect(city) {
     dispatch(ActionCreator.selectCity(city));
+  },
+  onSortTypeSelect(sortType) {
+    dispatch(ActionCreator.selectSortType(sortType));
   },
   onOfferFocus(id) {
     dispatch(ActionCreator.setFocusedOfferId(id));

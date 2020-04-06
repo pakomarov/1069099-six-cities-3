@@ -1,5 +1,5 @@
 import {reducer, ActionCreator} from './reducer.js';
-import {OfferType} from './const.js';
+import {OfferType, SORT_TYPES, DEFAULT_SORT_TYPE} from './const.js';
 
 
 const offers = [
@@ -111,6 +111,8 @@ it(`Should return initial state`, () => {
       zoom: 12,
     },
     focusedOfferId: null,
+    sortTypes: SORT_TYPES,
+    selectedSortType: DEFAULT_SORT_TYPE,
   });
 });
 
@@ -157,3 +159,7 @@ it(`Should set focused offer ID to a given value`, () => {
 
   expect(reducer(initialState, ActionCreator.setFocusedOfferId(payload))).toEqual(finalState);
 });
+
+
+// после декомпозиции редьюсера нужно дописать недостоющие тесты: выбор сортировки
+// после декомпозиции редьюсера нужно отредактировать тесты убрав лишнее
