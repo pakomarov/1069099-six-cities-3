@@ -81,7 +81,10 @@ it(`Should match snapshot of Catalog`, () => {
       cities={cities}
       selectedCity={selectedCity}
       offers={offers}
+      focusedOfferId={null}
       onCitySelect={() => {}}
+      onOfferFocus={() => {}}
+      onOfferFocusRemove={() => {}}
       onOfferTitleClick={() => {}}
     />, {
       createNodeMock: () => {

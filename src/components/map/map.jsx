@@ -9,7 +9,7 @@ const Icon = {
     iconUrl: `img/pin.svg`,
     iconSize: ICON_SIZE,
   }),
-  ACTIVE: leaflet.icon({
+  HIGHLIGHTED: leaflet.icon({
     iconUrl: `img/pin-active.svg`,
     iconSize: ICON_SIZE
   })
@@ -44,39 +44,69 @@ class Map extends PureComponent {
     this._containerRef = createRef();
 
     this.map = null;
-
-    this.markers = [];
+    this.markersWithId = [];
   }
 
   componentDidMount() {
-    const {center, zoom, sites} = this.props;
+    const {center, zoom, highlightedSiteId} = this.props;
     const containerElement = this._containerRef.current;
 
     this.map = getLeafletMap(containerElement, center, zoom);
 
-    sites.forEach((coords) => {
-      const marker = leaflet.marker(coords, {icon: Icon.DEFAULT});
-      this.markers.push(marker);
-      marker.addTo(this.map);
-    });
+    this._addMarkers();
+
+    if (highlightedSiteId !== null) {
+      this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+    }
   }
 
   componentDidUpdate(prevProps) {
-    const {center, zoom, sites} = this.props;
+    const {center, zoom, sites, highlightedSiteId} = this.props;
 
     if (center !== prevProps.center) {
       this.map.setView(center, zoom);
     }
 
     if (JSON.stringify(sites) !== JSON.stringify(prevProps.sites)) {
-      this.markers.forEach((marker)=> this.map.removeLayer(marker));
-      this.markers = [];
+      this._removeMarkers();
 
-      sites.forEach((coords) => {
-        const marker = leaflet.marker(coords, {icon: Icon.DEFAULT});
-        this.markers.push(marker);
-        marker.addTo(this.map);
+      this._addMarkers();
+
+      if (highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+      }
+    }
+
+    if (highlightedSiteId !== prevProps.highlightedSiteId) {
+      if (prevProps.highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.DEFAULT, prevProps.highlightedSiteId);
+      }
+      if (highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+      }
+    }
+  }
+
+  _addMarkers() {
+    this.props.sites.forEach(({id, coords}) => {
+      const marker = leaflet.marker(coords, {icon: Icon.DEFAULT});
+      marker.addTo(this.map);
+      this.markersWithId.push({
+        id,
+        marker,
       });
+    });
+  }
+
+  _removeMarkers() {
+    this.markersWithId.forEach(({marker})=> this.map.removeLayer(marker));
+    this.markersWithId = [];
+  }
+
+  _setIconForMarkerWithId(icon, highlightId) {
+    const markerWithId = this.markersWithId.find(({id}) => id === highlightId);
+    if (markerWithId) {
+      markerWithId.marker.setIcon(icon);
     }
   }
 
@@ -92,10 +122,19 @@ class Map extends PureComponent {
 }
 
 
+Map.defaultProps = {
+  highlightedSiteId: null,
+};
+
+
 Map.propTypes = {
   center: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.number.isRequired,
-  sites: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+  sites: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    coords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  })).isRequired,
+  highlightedSiteId: PropTypes.number,
 };
 
 

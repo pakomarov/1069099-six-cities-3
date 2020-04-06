@@ -171,7 +171,8 @@ exports[`Should match snapshot of App 1`] = `
           >
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -275,7 +276,8 @@ exports[`Should match snapshot of App 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
@@ -372,7 +374,8 @@ exports[`Should match snapshot of App 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -476,7 +479,8 @@ exports[`Should match snapshot of App 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="cities__image-wrapper place-card__image-wrapper"

@@ -27,7 +27,8 @@ it(`Should call onTitleClick`, () => {
   const offerCard = shallow(
       <OfferCard
         offer={offer}
-        onMouseOver={() => {}}
+        onFocus={() => {}}
+        onFocusRemove={() => {}}
         onTitleClick={onTitleClick}
       />
   );
@@ -45,7 +46,8 @@ it(`Should pass offer prop into the callback onTitleClick`, () => {
   const offerCard = shallow(
       <OfferCard
         offer={offer}
-        onMouseOver={() => {}}
+        onFocus={() => {}}
+        onFocusRemove={() => {}}
         onTitleClick={onTitleClick}
       />
   );
@@ -57,19 +59,38 @@ it(`Should pass offer prop into the callback onTitleClick`, () => {
   expect(onTitleClick).toHaveBeenCalledWith(offer);
 });
 
-it(`Should pass offer to onMouseOver on mouseover event`, () => {
-  const onMouseOver = jest.fn();
+it(`Should pass offer id to onFocus on mouseenter event`, () => {
+  const onFocus = jest.fn();
 
   const offerCard = shallow(
       <OfferCard
         offer={offer}
-        onMouseOver={onMouseOver}
+        onFocus={onFocus}
+        onFocusRemove={() => {}}
         onTitleClick={() => {}}
       />
   );
 
   const offerCardContainerElement = offerCard.find(`.place-card`);
-  offerCardContainerElement.simulate(`mouseover`);
+  offerCardContainerElement.simulate(`mouseenter`);
 
-  expect(onMouseOver).toHaveBeenCalledWith(offer);
+  expect(onFocus).toHaveBeenCalledWith(offer.id);
+});
+
+it(`Should call onFocusRemove on mouseleave event`, () => {
+  const onFocusRemove = jest.fn();
+
+  const offerCard = shallow(
+      <OfferCard
+        offer={offer}
+        onFocus={() => {}}
+        onFocusRemove={onFocusRemove}
+        onTitleClick={() => {}}
+      />
+  );
+
+  const offerCardContainerElement = offerCard.find(`.place-card`);
+  offerCardContainerElement.simulate(`mouseleave`);
+
+  expect(onFocusRemove).toHaveBeenCalled();
 });

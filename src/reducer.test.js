@@ -109,7 +109,8 @@ it(`Should return initial state`, () => {
       coords: [52.38333, 4.9],
       name: `Amsterdam`,
       zoom: 12,
-    }
+    },
+    focusedOfferId: null,
   });
 });
 
@@ -120,7 +121,8 @@ it(`Should change selectedCity to a given value`, () => {
       coords: [1, 2],
       name: `InitialCity`,
       zoom: 12,
-    }
+    },
+    focusedOfferId: null,
   };
 
   const payload = {
@@ -132,7 +134,26 @@ it(`Should change selectedCity to a given value`, () => {
   const finalState = {
     offers: void 0,
     selectedCity: payload,
+    focusedOfferId: null,
   };
 
   expect(reducer(initialState, ActionCreator.selectCity(payload))).toEqual(finalState);
+});
+
+it(`Should set focused offer ID to a given value`, () => {
+  const initialState = {
+    offers: void 0,
+    selectedCity: void 0,
+    focusedOfferId: 0,
+  };
+
+  const payload = 5;
+
+  const finalState = {
+    offers: void 0,
+    selectedCity: void 0,
+    focusedOfferId: payload,
+  };
+
+  expect(reducer(initialState, ActionCreator.setFocusedOfferId(payload))).toEqual(finalState);
 });

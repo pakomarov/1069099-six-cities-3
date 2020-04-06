@@ -14,8 +14,14 @@ const TypeValueToTypeName = {
 const convertStarRatingToPercentageRating = (starRating) => Math.round(starRating) * 20;
 
 
-const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
+const OfferCard = ({
+  offer,
+  onFocus,
+  onFocusRemove,
+  onTitleClick
+}) => {
   const {
+    id,
     thumbnail,
     isPremium,
     price,
@@ -29,7 +35,8 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
 
   return (
     <article className="cities__place-card place-card"
-      onMouseOver={() => onMouseOver(offer)}
+      onMouseEnter={() => onFocus(id)}
+      onMouseLeave={() => onFocusRemove()}
     >
       {isPremium &&
       <div className="place-card__mark">
@@ -80,6 +87,7 @@ const OfferCard = ({offer, onMouseOver, onTitleClick}) => {
 
 OfferCard.propTypes = {
   offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
@@ -87,7 +95,8 @@ OfferCard.propTypes = {
     type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.ROOM, OfferType.HOUSE, OfferType.HOTEL]),
     rating: PropTypes.number.isRequired,
   }).isRequired,
-  onMouseOver: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  onFocusRemove: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
 };
 

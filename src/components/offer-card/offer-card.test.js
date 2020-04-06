@@ -20,7 +20,8 @@ it(`Should match snapshot of OfferCard`, () => {
   const tree = renderer
     .create(<OfferCard
       offer={offer}
-      onMouseOver={() => {}}
+      onFocus={() => {}}
+      onFocusRemove={() => {}}
       onTitleClick={() => {}}
     />)
     .toJSON();

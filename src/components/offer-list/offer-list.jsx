@@ -1,48 +1,36 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import OfferCard from '../offer-card/offer-card.jsx';
 
 
-class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeOffer: null,
-    };
-
-    this._handleOfferCardMouseOver = this._handleOfferCardMouseOver.bind(this);
-  }
-
-  _handleOfferCardMouseOver(offer) {
-    this.setState({
-      activeOffer: offer,
-    });
-  }
-
-  render() {
-    const {offers, onOfferTitleClick} = this.props;
-
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => (
-          <OfferCard
-            key={`${offer.id}`}
-            offer={offer}
-            onMouseOver={this._handleOfferCardMouseOver}
-            onTitleClick={onOfferTitleClick}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+const OfferList = ({
+  offers,
+  onOfferFocus,
+  onOfferFocusRemove,
+  onOfferTitleClick,
+}) => {
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {offers.map((offer) => (
+        <OfferCard
+          key={`${offer.id}`}
+          offer={offer}
+          onFocus={onOfferFocus}
+          onFocusRemove={onOfferFocusRemove}
+          onTitleClick={onOfferTitleClick}
+        />
+      ))}
+    </div>
+  );
+};
 
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
   })).isRequired,
+  onOfferFocus: PropTypes.func.isRequired,
+  onOfferFocusRemove: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
 

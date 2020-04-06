@@ -49,6 +49,8 @@ it(`Should match snapshot of OfferList`, () => {
   const tree = renderer
     .create(<OfferList
       offers={offers}
+      onOfferFocus={() => {}}
+      onOfferFocusRemove={() => {}}
       onOfferTitleClick={() => {}}
     />)
     .toJSON();

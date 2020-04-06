@@ -3,7 +3,7 @@ import {OfferType} from '../const.js';
 
 export default [
   {
-    id: 1,
+    id: 11,
     coords: [52.3909553943508, 4.85309666406198],
     thumbnail: `img/apartment-01.jpg`,
     isPremium: true,
@@ -22,7 +22,7 @@ export default [
       isSuper: true,
     }
   }, {
-    id: 2,
+    id: 12,
     coords: [52.369553943508, 4.85309666406198],
     thumbnail: `img/room.jpg`,
     isPremium: false,
@@ -41,7 +41,7 @@ export default [
       isSuper: false,
     }
   }, {
-    id: 3,
+    id: 33,
     coords: [52.3909553943508, 4.929309666406198],
     thumbnail: `img/apartment-02.jpg`,
     isPremium: true,

@@ -10,7 +10,12 @@ const convertStarRatingToPercentageRating = (starRating) => Math.round(starRatin
 
 
 const PageOffer = ({
-  offer: {
+  offer,
+  reviews,
+  nearbyOffers,
+}) => {
+  const {
+    id,
     images,
     isPremium,
     title,
@@ -30,13 +35,16 @@ const PageOffer = ({
       coords: cityCoords,
       zoom,
     },
-  },
-  reviews,
-  nearbyOffers,
-}) => {
+  } = offer;
+
   const percentageRating = convertStarRatingToPercentageRating(rating);
+
   const trimmedNearbyOffers = nearbyOffers.slice(0, MAX_NEARBY_OFFER_COUNT);
-  const sites = trimmedNearbyOffers.map((offer) => offer.coords);
+  const offersForMap = [...trimmedNearbyOffers, offer];
+  const sites = offersForMap.map((offerForMap) => ({
+    id: offerForMap.id,
+    coords: offerForMap.coords,
+  }));
 
   return (
     <div className="page">
@@ -202,6 +210,7 @@ const PageOffer = ({
               center={cityCoords}
               zoom={zoom}
               sites={sites}
+              highlightedSiteId={id}
             />
           </section>
         </section>
@@ -221,6 +230,7 @@ const PageOffer = ({
 
 PageOffer.propTypes = {
   offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     isPremium: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,

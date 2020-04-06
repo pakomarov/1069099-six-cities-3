@@ -11,12 +11,18 @@ const Catalog = ({
   cities,
   selectedCity,
   offers,
+  focusedOfferId,
   onCitySelect,
+  onOfferFocus,
+  onOfferFocusRemove,
   onOfferTitleClick,
 }) => {
   const offerCount = offers.length;
   const selectedCityName = selectedCity.name;
-  const sites = offers.map((offer) => offer.coords);
+  const sites = offers.map((offer) => ({
+    id: offer.id,
+    coords: offer.coords,
+  }));
 
   return (
     <main className="page__main page__main--index">
@@ -50,6 +56,8 @@ const Catalog = ({
             </form>
             <OfferList
               offers={offers}
+              onOfferFocus={onOfferFocus}
+              onOfferFocusRemove={onOfferFocusRemove}
               onOfferTitleClick={onOfferTitleClick}
             />
           </section>
@@ -59,6 +67,7 @@ const Catalog = ({
                 center={selectedCity.coords}
                 zoom={selectedCity.zoom}
                 sites={sites}
+                highlightedSiteId={focusedOfferId}
               />
             </section>
           </div>
@@ -77,7 +86,10 @@ Catalog.propTypes = {
     coords: PropTypes.array.isRequired,
     zoom: PropTypes.number.isRequired,
   }).isRequired,
+  focusedOfferId: PropTypes.number,
   onCitySelect: PropTypes.func.isRequired,
+  onOfferFocus: PropTypes.func.isRequired,
+  onOfferFocusRemove: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
 
@@ -96,11 +108,18 @@ const mapStateToProps = (state) => ({
   cities: getCitiesFromOffers(state.offers),
   selectedCity: state.selectedCity,
   offers: getOffersForSelectedCity(state.offers, state.selectedCity),
+  focusedOfferId: state.focusedOfferId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCitySelect(city) {
     dispatch(ActionCreator.selectCity(city));
+  },
+  onOfferFocus(id) {
+    dispatch(ActionCreator.setFocusedOfferId(id));
+  },
+  onOfferFocusRemove() {
+    dispatch(ActionCreator.setFocusedOfferId(null));
   },
 });
 

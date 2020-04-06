@@ -8,7 +8,12 @@ it(`Should match snapshot of Map`, () => {
     .create(<Map
       center={[1, 2]}
       zoom={1}
-      sites={[[1, 2]]}
+      sites={[
+        {
+          id: 1,
+          coords: [1, 2]
+        },
+      ]}
     />, {
       createNodeMock: () => {
         return document.createElement(`div`);
