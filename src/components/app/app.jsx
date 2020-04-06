@@ -1,11 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import Main from '../main/main.jsx';
-import Offer from '../offer/offer.jsx';
+import PageMain from '../page-main/page-main.jsx';
+import PageOffer from '../page-offer/page-offer.jsx';
 
-
-//foo
 
 const Page = {
   MAIN: `main`,
@@ -33,21 +31,22 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
+    const {reviews, nearbyOffers} = this.props;
     const {currentPage, selectedOffer} = this.state;
 
     switch (currentPage) {
       case Page.MAIN:
         return (
-          <Main
-            offers={offers}
+          <PageMain
             onOfferTitleClick={this._handleOfferTitleClick}
           />
         );
       case Page.OFFER:
         return (
-          <Offer
+          <PageOffer
             offer={selectedOffer}
+            reviews={reviews}
+            nearbyOffers={nearbyOffers}
           />
         );
     }
@@ -56,7 +55,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    // const {reviews, nearbyOffers} = this.props;
 
     return (
       <BrowserRouter>
@@ -65,16 +64,17 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-main">
-            <Main
-              offers={offers}
+            <PageMain
               onOfferTitleClick={this._handleOfferTitleClick}
             />
           </Route>
-          <Route exact path="/dev-offer">
-            <Offer
-              offer={offers[0]}
+          {/* <Route exact path="/dev-offer">
+            <PageOffer
+              offer={{}}
+              reviews={reviews}
+              nearbyOffers={nearbyOffers}
             />
-          </Route>
+          </Route> */}
         </Switch>
       </BrowserRouter>
     );
@@ -83,7 +83,8 @@ class App extends PureComponent {
 
 
 App.propTypes = {
-  offers: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
+  nearbyOffers: PropTypes.array.isRequired,
 };
 
 

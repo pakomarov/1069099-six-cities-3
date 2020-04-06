@@ -1,28 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {OfferType} from '../../const.js';
-import OfferCard from './offer-card.jsx';
+import NearbyOffer from './nearby-offer.jsx';
 
 
 const offer = {
-  id: 1,
-  coords: [1, 2],
   thumbnail: `img/apartment-01.jpg`,
-  isPremium: true,
   price: 120,
+  rating: 0.1,
   title: `Beautiful luxurious apartment at great location`,
   type: OfferType.APARTMENT,
-  rating: 0.1,
 };
 
 
-it(`Should match snapshot of OfferCard`, () => {
+it(`Should match snapshot of NearbyOffer`, () => {
   const tree = renderer
-    .create(<OfferCard
-      offer={offer}
-      onFocus={() => {}}
-      onFocusRemove={() => {}}
-      onTitleClick={() => {}}
+    .create(<NearbyOffer
+      nearbyOffer={offer}
     />)
     .toJSON();
 

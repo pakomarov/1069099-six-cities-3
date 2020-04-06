@@ -13,10 +13,19 @@ const ZOOM = 12;
 
 const ICON_SIZE = [30, 30];
 
+const MAX_IMAGE_COUNT = 6;
+
+const MAX_NEARBY_OFFER_COUNT = 3;
+
+const MAX_REVIEW_COUNT = 10;
+
 
 export {
   OfferType,
   CityCoords,
   ZOOM,
   ICON_SIZE,
+  MAX_IMAGE_COUNT,
+  MAX_NEARBY_OFFER_COUNT,
+  MAX_REVIEW_COUNT,
 };

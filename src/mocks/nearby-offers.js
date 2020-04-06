@@ -3,7 +3,7 @@ import {OfferType} from '../const.js';
 
 export default [
   {
-    id: 1,
+    id: 11,
     coords: [52.3909553943508, 4.85309666406198],
     thumbnail: `img/apartment-01.jpg`,
     isPremium: true,
@@ -20,14 +20,9 @@ export default [
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
       isSuper: true,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Amsterdam`,
-      zoom: 12,
-    },
+    }
   }, {
-    id: 2,
+    id: 12,
     coords: [52.369553943508, 4.85309666406198],
     thumbnail: `img/room.jpg`,
     isPremium: false,
@@ -44,14 +39,9 @@ export default [
       avatar: `img/avatar-angelina.jpg`,
       name: `A`,
       isSuper: false,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Paris`,
-      zoom: 12,
-    },
+    }
   }, {
-    id: 3,
+    id: 33,
     coords: [52.3909553943508, 4.929309666406198],
     thumbnail: `img/apartment-02.jpg`,
     isPremium: true,
@@ -68,35 +58,6 @@ export default [
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
       isSuper: true,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Paris`,
-      zoom: 12,
-    },
-  }, {
-    id: 4,
-    coords: [52.3809553943508, 4.939309666406198],
-    thumbnail: `img/apartment-03.jpg`,
-    isPremium: false,
-    price: 9999,
-    title: `Nice, cozy, warm big bed apartment`,
-    type: OfferType.HOTEL,
-    rating: 4.87,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
-    bedroomCount: 3,
-    maxGuestCount: 3,
-    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-    host: {
-      avatar: `img/avatar-angelina.jpg`,
-      name: `Angelina`,
-      isSuper: true,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Brussels`,
-      zoom: 12,
-    },
-  }
+    }
+  },
 ];

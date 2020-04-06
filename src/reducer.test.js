@@ -1,7 +1,8 @@
-import {OfferType} from '../const.js';
+import {reducer, ActionCreator} from './reducer.js';
+import {OfferType} from './const.js';
 
 
-export default [
+const offers = [
   {
     id: 1,
     coords: [52.3909553943508, 4.85309666406198],
@@ -100,3 +101,59 @@ export default [
     },
   }
 ];
+
+it(`Should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    offers,
+    selectedCity: {
+      coords: [52.38333, 4.9],
+      name: `Amsterdam`,
+      zoom: 12,
+    },
+    focusedOfferId: null,
+  });
+});
+
+it(`Should change selectedCity to a given value`, () => {
+  const initialState = {
+    offers: void 0,
+    selectedCity: {
+      coords: [1, 2],
+      name: `InitialCity`,
+      zoom: 12,
+    },
+    focusedOfferId: null,
+  };
+
+  const payload = {
+    coords: [3, 4],
+    name: `FinalCity`,
+    zoom: 12,
+  };
+
+  const finalState = {
+    offers: void 0,
+    selectedCity: payload,
+    focusedOfferId: null,
+  };
+
+  expect(reducer(initialState, ActionCreator.selectCity(payload))).toEqual(finalState);
+});
+
+it(`Should set focused offer ID to a given value`, () => {
+  const initialState = {
+    offers: void 0,
+    selectedCity: void 0,
+    focusedOfferId: 0,
+  };
+
+  const payload = 5;
+
+  const finalState = {
+    offers: void 0,
+    selectedCity: void 0,
+    focusedOfferId: payload,
+  };
+
+  expect(reducer(initialState, ActionCreator.setFocusedOfferId(payload))).toEqual(finalState);
+});

@@ -1,32 +1,29 @@
-import {OfferType} from '../const.js';
+import React from 'react';
+import renderer from 'react-test-renderer';
+import {OfferType} from '../../const.js';
+import {Catalog} from './catalog.jsx';
 
 
-export default [
+const cities = [
   {
-    id: 1,
-    coords: [52.3909553943508, 4.85309666406198],
-    thumbnail: `img/apartment-01.jpg`,
-    isPremium: true,
-    price: 120,
-    title: `Beautiful luxurious apartment at great location`,
-    type: OfferType.APARTMENT,
-    rating: 0.1,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
-    bedroomCount: 3,
-    maxGuestCount: 3,
-    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-    host: {
-      avatar: `img/avatar-angelina.jpg`,
-      name: `Angelina`,
-      isSuper: true,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Amsterdam`,
-      zoom: 12,
-    },
+    coords: [52.38333, 4.9],
+    name: `Paris`,
+    zoom: 12,
   }, {
+    coords: [52.38333, 4.9],
+    name: `Amsterdam`,
+    zoom: 12,
+  },
+];
+
+const selectedCity = {
+  coords: [52.38333, 4.9],
+  name: `Paris`,
+  zoom: 12,
+};
+
+const offers = [
+  {
     id: 2,
     coords: [52.369553943508, 4.85309666406198],
     thumbnail: `img/room.jpg`,
@@ -74,29 +71,27 @@ export default [
       name: `Paris`,
       zoom: 12,
     },
-  }, {
-    id: 4,
-    coords: [52.3809553943508, 4.939309666406198],
-    thumbnail: `img/apartment-03.jpg`,
-    isPremium: false,
-    price: 9999,
-    title: `Nice, cozy, warm big bed apartment`,
-    type: OfferType.HOTEL,
-    rating: 4.87,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/apartment-01.jpg`],
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
-    bedroomCount: 3,
-    maxGuestCount: 3,
-    features: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-    host: {
-      avatar: `img/avatar-angelina.jpg`,
-      name: `Angelina`,
-      isSuper: true,
-    },
-    city: {
-      coords: [52.38333, 4.9],
-      name: `Brussels`,
-      zoom: 12,
-    },
   }
 ];
+
+
+it(`Should match snapshot of Catalog`, () => {
+  const tree = renderer
+    .create(<Catalog
+      cities={cities}
+      selectedCity={selectedCity}
+      offers={offers}
+      focusedOfferId={null}
+      onCitySelect={() => {}}
+      onOfferFocus={() => {}}
+      onOfferFocusRemove={() => {}}
+      onOfferTitleClick={() => {}}
+    />, {
+      createNodeMock: () => {
+        return document.createElement(`div`);
+      }
+    })
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

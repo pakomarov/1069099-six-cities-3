@@ -1,20 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should match snapshot of OfferCard 1`] = `
+exports[`Should match snapshot of NearbyOffer 1`] = `
 <article
-  className="cities__place-card place-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  className="near-places__card place-card"
 >
   <div
-    className="place-card__mark"
-  >
-    <span>
-      Premium
-    </span>
-  </div>
-  <div
-    className="cities__image-wrapper place-card__image-wrapper"
+    className="near-places__image-wrapper place-card__image-wrapper"
   >
     <a
       href="#"
@@ -50,7 +41,7 @@ exports[`Should match snapshot of OfferCard 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button"
+        className="place-card__bookmark-button place-card__bookmark-button--active button"
         type="button"
       >
         <svg
@@ -65,7 +56,7 @@ exports[`Should match snapshot of OfferCard 1`] = `
         <span
           className="visually-hidden"
         >
-          To bookmarks
+          In bookmarks
         </span>
       </button>
     </div>
@@ -94,7 +85,6 @@ exports[`Should match snapshot of OfferCard 1`] = `
     >
       <a
         href="#"
-        onClick={[Function]}
       >
         Beautiful luxurious apartment at great location
       </a>

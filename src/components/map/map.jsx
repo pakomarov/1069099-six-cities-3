@@ -1,34 +1,39 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
-import {ZOOM, ICON_SIZE} from '../../const.js';
+import {ICON_SIZE} from '../../const.js';
 
 
-const icon = leaflet.icon({
-  iconUrl: `img/pin.svg`,
-  iconSize: ICON_SIZE,
-});
-
-
-const getLeafletMap = (container, area) => {
-  const map = leaflet.map(container, {
-    center: area,
-    zoom: ZOOM,
-    zoomControl: false,
-    marker: true
-  });
-
-  leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-    attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+const Icon = {
+  DEFAULT: leaflet.icon({
+    iconUrl: `img/pin.svg`,
+    iconSize: ICON_SIZE,
+  }),
+  HIGHLIGHTED: leaflet.icon({
+    iconUrl: `img/pin-active.svg`,
+    iconSize: ICON_SIZE
   })
-  .addTo(map);
-
-  return map;
 };
 
-const addMarkerToMap = (markerCoords, map) => {
-  leaflet.marker(markerCoords, {icon})
-  .addTo(map);
+const TileLayer = {
+  URL: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
+  OPTIONS: {
+    attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+  },
+};
+
+
+const getLeafletMap = (container, center, zoom) => {
+  const map = leaflet.map(container, {
+    center,
+    zoom,
+    zoomControl: false,
+    marker: true,
+  });
+
+  leaflet.tileLayer(TileLayer.URL, TileLayer.OPTIONS).addTo(map);
+
+  return map;
 };
 
 
@@ -37,35 +42,99 @@ class Map extends PureComponent {
     super(props);
 
     this._containerRef = createRef();
+
+    this.map = null;
+    this.markersWithId = [];
   }
 
   componentDidMount() {
-    const {area, markers} = this.props;
+    const {center, zoom, highlightedSiteId} = this.props;
     const containerElement = this._containerRef.current;
 
-    const map = getLeafletMap(containerElement, area);
-    markers.forEach((marker) => addMarkerToMap(marker, map));
+    this.map = getLeafletMap(containerElement, center, zoom);
+
+    this._addMarkers();
+
+    if (highlightedSiteId !== null) {
+      this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const {center, zoom, sites, highlightedSiteId} = this.props;
+
+    if (center !== prevProps.center) {
+      this.map.setView(center, zoom);
+    }
+
+    if (JSON.stringify(sites) !== JSON.stringify(prevProps.sites)) {
+      this._removeMarkers();
+
+      this._addMarkers();
+
+      if (highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+      }
+    }
+
+    if (highlightedSiteId !== prevProps.highlightedSiteId) {
+      if (prevProps.highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.DEFAULT, prevProps.highlightedSiteId);
+      }
+      if (highlightedSiteId !== null) {
+        this._setIconForMarkerWithId(Icon.HIGHLIGHTED, highlightedSiteId);
+      }
+    }
+  }
+
+  _addMarkers() {
+    this.props.sites.forEach(({id, coords}) => {
+      const marker = leaflet.marker(coords, {icon: Icon.DEFAULT});
+      marker.addTo(this.map);
+      this.markersWithId.push({
+        id,
+        marker,
+      });
+    });
+  }
+
+  _removeMarkers() {
+    this.markersWithId.forEach(({marker})=> this.map.removeLayer(marker));
+    this.markersWithId = [];
+  }
+
+  _setIconForMarkerWithId(icon, highlightId) {
+    const markerWithId = this.markersWithId.find(({id}) => id === highlightId);
+    if (markerWithId) {
+      markerWithId.marker.setIcon(icon);
+    }
   }
 
   render() {
     return (
-      <div className="cities__right-section">
-        <section
-          className="cities__map map"
-          ref={this._containerRef}
-        >
-        </section>
-      </div>
+      <div
+        ref={this._containerRef}
+        id="map"
+        style={{width: `100%`, height: `100%`}}
+      ></div>
     );
   }
 }
 
 
+Map.defaultProps = {
+  highlightedSiteId: null,
+};
+
+
 Map.propTypes = {
-  area: PropTypes.arrayOf(PropTypes.number),
-  markers: PropTypes.arrayOf(
-      PropTypes.arrayOf(PropTypes.number)
-  ),
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
+  sites: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    coords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  })).isRequired,
+  highlightedSiteId: PropTypes.number,
 };
 
 
