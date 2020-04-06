@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withPopupLogic from '../../hocs/with-popup-logic/with-popup-logic.js';
 
 
 const SortTypeToText = {
@@ -14,9 +15,16 @@ const Sorting = ({
   sortTypes,
   selectedSortType,
   onSortTypeSelect,
+  isOpened,
+  onViewChange,
+  containerRef,
 }) => {
   return (
-    <form className="places__sorting" action="#" method="get">
+    <form
+      ref={containerRef}
+      className="places__sorting" action="#" method="get"
+      onClick={() => onViewChange()}
+    >
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex="0">
         {SortTypeToText[selectedSortType] ? SortTypeToText[selectedSortType] : selectedSortType}
@@ -24,7 +32,7 @@ const Sorting = ({
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className="places__options places__options--custom places__options--opened">
+      <ul className={`places__options places__options--custom${isOpened ? ` places__options--opened` : ``}`}>
         {sortTypes.map((sortType) => (
           <li
             key={sortType}
@@ -43,7 +51,10 @@ Sorting.propTypes = {
   sortTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedSortType: PropTypes.string.isRequired,
   onSortTypeSelect: PropTypes.func.isRequired,
+  isOpened: PropTypes.bool.isRequired,
+  onViewChange: PropTypes.func.isRequired,
+  containerRef: PropTypes.any,
 };
 
 
-export default Sorting;
+export default withPopupLogic(Sorting);
