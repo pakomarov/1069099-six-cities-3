@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import withPopupLogic from '../../hocs/with-popup-logic/with-popup-logic.js';
 
@@ -57,4 +57,5 @@ Sorting.propTypes = {
 };
 
 
-export default withPopupLogic(Sorting);
+export {Sorting};
+export default withPopupLogic(memo(Sorting));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
@@ -143,4 +143,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export {Catalog};
-export default connect(mapStateToProps, mapDispatchToProps)(Catalog);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Catalog));

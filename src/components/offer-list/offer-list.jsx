@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import OfferCard from '../offer-card/offer-card.jsx';
 
@@ -35,4 +35,4 @@ OfferList.propTypes = {
 };
 
 
-export default OfferList;
+export default memo(OfferList);

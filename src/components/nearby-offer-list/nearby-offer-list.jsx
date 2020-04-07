@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import NearbyOffer from '../nearby-offer/nearby-offer.jsx';
 
@@ -24,6 +24,4 @@ NearbyOfferList.propTypes = {
 };
 
 
-export default NearbyOfferList;
-
-
+export default memo(NearbyOfferList);

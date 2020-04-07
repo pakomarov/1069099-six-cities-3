@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import Catalog from '../catalog/catalog.jsx';
 
@@ -42,4 +42,4 @@ PageMain.propTypes = {
 };
 
 
-export default PageMain;
+export default memo(PageMain);

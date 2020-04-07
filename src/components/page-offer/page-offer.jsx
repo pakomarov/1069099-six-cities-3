@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {MAX_IMAGE_COUNT, MAX_NEARBY_OFFER_COUNT} from '../../const.js';
 import ReviewList from '../review-list/review-list.jsx';
@@ -256,4 +256,4 @@ PageOffer.propTypes = {
 };
 
 
-export default PageOffer;
+export default memo(PageOffer);
