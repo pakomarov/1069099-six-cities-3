@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {OfferType} from '../../const.js';
 
@@ -78,4 +78,4 @@ NearbyOffer.propTypes = {
 };
 
 
-export default NearbyOffer;
+export default memo(NearbyOffer);

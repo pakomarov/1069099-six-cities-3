@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {MAX_REVIEW_COUNT} from '../../const.js';
 import Review from '../review/review.jsx';
@@ -32,4 +32,4 @@ ReviewList.propTypes = {
 };
 
 
-export default ReviewList;
+export default memo(ReviewList);

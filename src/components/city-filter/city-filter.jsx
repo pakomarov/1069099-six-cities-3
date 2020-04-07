@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -41,4 +41,4 @@ CityFilter.propTypes = {
 };
 
 
-export default CityFilter;
+export default memo(CityFilter);

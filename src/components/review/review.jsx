@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -62,4 +62,4 @@ Review.propTypes = {
 };
 
 
-export default Review;
+export default memo(Review);
