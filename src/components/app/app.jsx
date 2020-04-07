@@ -5,6 +5,9 @@ import PageMain from '../page-main/page-main.jsx';
 import PageOffer from '../page-offer/page-offer.jsx';
 
 
+// foo
+
+
 const Page = {
   MAIN: `main`,
   OFFER: `offer`,
